@@ -2,52 +2,83 @@
 
 ## Description
 
-eTrace est un outil python fonctionnant sous Linux permettant de retracer tous les sites web sur lesquels vous avec un compte avec une adresse mail.
+eTrace is a python tool that trace your email on internet. It founds every websites on which you have an account.
 
-## Prérequis
+## Prerequisites
 
-Installation de pip :
+Pip installation :
 ```
-sudo apt-get install python-pip
-```
-
-## Installation
-
-Vous pouvez installer eTrace directement depuis le dépôt [PyPi](https://pypi.org/project/eTrace/) :
-```
-sudo pip install eTrace
+python3 get-pip.py
 ```
 
-**Mise à jour**
+## Install
+
+From [PyPi](https://pypi.org/project/eTrace/) :
 ```
-sudo pip install eTrace -U
+pip install eTrace
 ```
 
-## Désinstallation
-
-Pour désinstaller eTrace :
+**Update**
 ```
-sudo pip uninstall eTrace
+pip install eTrace -U
+```
+
+## Uninstall
+
+```
+pip uninstall eTrace
 ```
 
 ## Utilisation
 
-Pour lister tous les sites web sur lesquels vous avez un compte avec l'adresse mail `exemple@gmail.com`, utiliser la commande suivante :
 ```
-eTrace exemple@gmail.com
+eTrace <EMAIL> <PASSWORD>
 ```
-
-Vous pouvez consulter la [liste des sites supportés]() et la [liste des sites non supportés]().
 
 ## Contribution
 
-Pour contribuer au projet, vous devez réaliser un fork du projet vers votre espace personnel. Vous pourrez alors faire un pull request en temps voulu. Merci de contacter [@LucBerge](https://github.com/LucBerge) pour plus d'informations sur les tâches à réaliser.
+1. Fork
 
+2. Create a new branch and checkout
 
-## Issue
+#### Add a pop address
 
-File "/usr/lib/python2.7/subprocess.py", line 1343, in _execute_child
-- mv geckodrive /usr/local/bin/geckodriver
-- driver = webdriver.Firefox(executable_path='/path/to/geckodriver')
+3. Add a key:value in pop.py
 
-https://selenium-python.readthedocs.io/locating-elements.html
+4. Pull request
+
+#### Add a new website
+
+3. Create a new file from template
+
+```python
+import requests
+
+NAME = "mytemplate.com"
+EMAIL = "my@template.com"
+
+def ask(email):
+
+	URL = 'https://mytemplate.com/password_reset'
+	payload = {
+	    
+	}
+	return requests.post(URL, data=payload).status_code
+
+if __name__ == "__main__":
+	print(ask("test@test.com"))
+```
+
+4. Find the POST request to mimic using the network tool of your browser
+
+5. Implement the solution
+
+6. Check if it works
+
+7. Import your file in websites.py
+
+8. Pull request
+
+## Contact
+
+Please contact [@LucBerge](https://github.com/LucBerge) for more informations.
