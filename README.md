@@ -42,3 +42,12 @@ Vous pouvez consulter la [liste des sites supportés]() et la [liste des sites n
 ## Contribution
 
 Pour contribuer au projet, vous devez réaliser un fork du projet vers votre espace personnel. Vous pourrez alors faire un pull request en temps voulu. Merci de contacter [@LucBerge](https://github.com/LucBerge) pour plus d'informations sur les tâches à réaliser.
+
+
+## Issue
+
+File "/usr/lib/python2.7/subprocess.py", line 1343, in _execute_child
+- mv geckodrive /usr/local/bin/geckodriver
+- driver = webdriver.Firefox(executable_path='/path/to/geckodriver')
+
+https://selenium-python.readthedocs.io/locating-elements.html
