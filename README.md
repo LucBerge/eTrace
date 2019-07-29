@@ -18,7 +18,7 @@ From [PyPi](https://pypi.org/project/eTrace/) :
 pip install eTrace
 ```
 
-**Update**
+## Update
 ```
 pip install eTrace -U
 ```
@@ -29,13 +29,13 @@ pip install eTrace -U
 pip uninstall eTrace
 ```
 
-## Utilisation
+## Usage
 
 ```
 eTrace <EMAIL> <PASSWORD>
 ```
 
-## Contribution
+## Contribute
 
 1. Fork
 
@@ -69,7 +69,7 @@ if __name__ == "__main__":
 	print(ask("test@test.com"))
 ```
 
-4. Find the POST request to mimic using the network tool of your browser
+4. Find the POST request to mimic using the your browser's network tool
 
 5. Implement the solution
 
