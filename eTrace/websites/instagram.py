@@ -5,7 +5,6 @@ EMAIL = "security@mail.instagram.com"
 
 def ask(email):
 
-	s = requests.session()
 	URL = 'https://www.instagram.com/accounts/password/reset/'
 
 	headers={
@@ -31,7 +30,7 @@ def ask(email):
 		"recaptcha_challenge":""
 	}
 
-	 return requests.post(URL, data=payload, headers=headers).status_code
+	return requests.post(URL, data=payload, headers=headers).status_code
 
 if __name__ == "__main__":
 	print(ask("test@test.com"))
