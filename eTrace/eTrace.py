@@ -7,8 +7,13 @@ from websites import CALLERS, NAMES
 ##############
 
 def askServers(email): #GitHub example
-	for call in CALLERS:
-		call(email)
+
+	numCallers = len(CALLERS)
+	print("CALL 0/" + str(numCallers))
+
+	for i in range(numCallers):
+		CALLERS[i](email)
+		print("\033[FCALL " + str(i+1) + "/" + str(numCallers))
 
 ###############
 # getWebsites #
@@ -18,7 +23,7 @@ def getWebsites(mailbox, email, password):
 
 	all = {}
 	numMessages = len(mailbox.list()[1])
-	print("0/" + str(numMessages))
+	print("GET 0/" + str(numMessages))
 
 	for i in range(numMessages):
 		content = mailbox.retr(i+1)[1]
@@ -28,7 +33,7 @@ def getWebsites(mailbox, email, password):
 			if(website):
 				all[website] = i
 
-		print('\033[F' + str(i+1) + "/" + str(numMessages))
+		print("\033[FGET " + str(i+1) + "/" + str(numMessages))
 	return all
 
 def parseEmail(lines):
@@ -67,15 +72,14 @@ def main(email, password):
 	mailbox.pass_(password)
 
 	askServers(email)
-	#time.sleep(60*5) #wait 5 min
-	time.sleep(5) #wait 5 sec
+	time.sleep(10) # wait 10 sec to receive the last email
 	all = getWebsites(mailbox, email, password)
 
 	print("===== " + str(len(all)) + " result(s) =====")
 	for one in all.keys():
 		print(one)
 
-	removeAll(mailbox, all)
+	#removeAll(mailbox, all)	#Not working. Why ?
 	mailbox.quit()
 
 def isEmail(email):
@@ -89,7 +93,7 @@ def getPopFromUser(email):
 		raise Exception("Unknow pop address for domain " + domain)
 
 def getDomain(email):
-	return email[email.find("@")+1:]
+	return email[email.find("@")+1:email.rfind(".")]
 
 ##########
 # GLOBAL #
