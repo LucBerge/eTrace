@@ -1,6 +1,6 @@
 import poplib, time, re, requests, sys, types
-from pop import POPS
-from websites import CALLERS, NAMES
+from eTrace.pop import POPS
+from eTrace.websites import CALLERS, NAMES
 
 ##############
 # askServers #
@@ -72,7 +72,7 @@ def main(email, password):
 	mailbox.pass_(password)
 
 	askServers(email)
-	time.sleep(10) # wait 10 sec to receive the last email
+	time.sleep(5) # wait 5 sec to receive the last email
 	all = getWebsites(mailbox, email, password)
 
 	print("===== " + str(len(all)) + " result(s) =====")
@@ -99,14 +99,26 @@ def getDomain(email):
 # GLOBAL #
 ##########
 
+def parse():
+	if(len(sys.argv) == 3):
+		main(sys.argv[1], sys.argv[2])
+	elif(len(sys.argv) == 2):
+		if(sys.argv[1] == "-l" or sys.argv[1] == "--list"):
+			list()
+		else:
+			help()
+	else:
+		help()
+
+def list():
+	for name in NAMES.values():
+		print(name)
+
 def help():
-	print("Usage : '" + sys.argv[0] + " <EMAIL> <PASSWORD>'")
+	print("Usage:\n\teTrace <EMAIL> <PASSWORD>\n\nOptions:\n -l --list To list supported websites.")
 
 if __name__ == "__main__":
 	try:
-		if(len(sys.argv) == 3):
-			main(sys.argv[1], sys.argv[2])
-		else:
-			help()
+		parse()
 	except KeyboardInterrupt:
 		None

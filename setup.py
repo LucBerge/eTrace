@@ -15,5 +15,8 @@ setuptools.setup(
 	long_description_content_type="text/markdown",
 	url='https://github.com/LucBerge/eTrace',
 	packages=setuptools.find_packages(),
-	install_requires=['requests']
+	install_requires=['requests'],
+	entry_points = {
+        'console_scripts': ['eTrace=eTrace.eTrace:parse'],
+    }
 )

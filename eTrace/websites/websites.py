@@ -1,2 +1,2 @@
-import websites.github
-import websites.instagram
+import eTrace.websites.github
+import eTrace.websites.instagram
