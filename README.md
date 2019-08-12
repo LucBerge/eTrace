@@ -1,3 +1,5 @@
+[![release](https://img.shields.io/badge/release-1.0-succes.svg)](https://pypi.org/project/Y2T/)
+
 # eTrace
 
 ## Description
