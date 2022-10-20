@@ -1,4 +1,4 @@
-# eTrace
+# eTrace - DEPRECATED see [HOLELE](https://github.com/megadose/holehe)
 
 ## Description
 
